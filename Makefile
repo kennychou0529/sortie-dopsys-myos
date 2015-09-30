@@ -11,7 +11,7 @@ kernel.o \
 
 all: myos.bin
 
-.PHONEY: all clean iso run-qemu
+.PHONY: all clean iso run-qemu
 
 myos.bin: $(OBJS) linker.ld
 	$(CC) -T linker.ld -o $@ $(CFLAGS) $(OBJS) $(LIBS)
