@@ -4,7 +4,7 @@ This original code is from:
 - Sources: [sortie/dopsys/myos](https://cs.au.dk/~sortie/dopsys/myos/)
 - Instructions: [sortie/dopsys/osdev](https://cs.au.dk/~sortie/dopsys/osdev/) which starts with:
 
-And a good resource [osdev.org](http://osdev.org)
+And a good resource operating systems is [osdev.org](http://osdev.org)
 
 
 An "Operating System" which is loaded via a grub loader. The OS is trivial and only writes a string to to the VGA display memory. It consits of an assembly langange boot.s file written in 386 assembler that simply sets up the stack and calls the C routine "kmain". Kmain initializes the VGA screen at 0xB8000 and writes the string into the VGA screen.
@@ -23,11 +23,11 @@ or
 cd ~/prgs/sortie-dopsys-myos
 git clone git@github.com:winksaville/sortie-dopsys-myos.git
 ```
-We can't use the host compiler because it assumes linx is the OS when infact we're starting with nothing. Instead a cross compiler must be built and since this only runs on a 386 PC we'll create a i586-elf compiler.  So choose where the cross toolchain bins, libraries ... will be installed, for instance $HOME/opt/cross. This will then be used as the prefix when configuring binutils and gcc and needs to be on the PATH:
+We can't use the host compiler because it assumes linx is the OS when infact we're starting with nothing. Instead a cross compiler must be built and since this only runs on a 386 PC we'll create a i586-elf compiler.  So choose where the cross toolchain bins, libraries ... will be installed, for instance $HOME/opt/cross. This will then be used as the prefix when configuring binutils and gcc and the resulting binaries need to be on the PATH:
 ```
-echo "export PATH=$HOME/opt/cross:$PATH" >> ~/.bashrc
+echo 'export PATH="$HOME/opt/cross/bin:$PATH"' >> ~/.bashrc
 ```
-Now get the lastest versions of gcc tools and save to a convenient location:
+Now get the latest versions of gcc tools and save to a convenient location:
 ```
 mkdir -p ~/prgs/gcc-tool-chain/downloads
 cd ~/prgs/gcc-tool-chain/downloads
@@ -46,7 +46,7 @@ tar -xvf downloads/gmp-6.0.0a.tar.xz
 tar -xvf downloads/mpfr-3.1.3.tar.xz
 tar -xvf downloads/mpc-1.0.3.tar.gz
 ```
-Make symbolic links in gcc to the multi-precision libraries downloaded
+Make symbolic links in gcc to the multi-precision libraries that have been downloaded.
 ```
 cd gcc-5.2.0
 ln -s ../gmp-6.0.0 gmp
@@ -54,7 +54,7 @@ ln -s ../mpfr-3.1.3 mpfr
 ln -s ../mpc-1.0.3 mpc
 cd ..
 ```
-Create build directories for binutils and gcc
+Create build directories for binutils and gcc.
 ```
 mkdir -p builds/binutils-2.25.1-i586
 mkdir -p builds/gcc-5.2.0-i586
@@ -67,7 +67,7 @@ make all -j4
 make install
 cd ../..
 ```
-Then configure and build gcc. Note the targets for libgcc changed from all-libgcc to all-target-libgcc and install-libgcc to install-target-libgcc. We also only compile c and c++ and there are no preexisting OS headers so --without-headers.
+Then configure and build gcc c and c++ and we also specify --without-headers as this is a bare metal compiler.
 ```
 cd builds/gcc-5.2.0-i586
 ../../gcc-5.2.0/configure --prefix=$HOME/opt/cross --target=i586-elf --disable-nls --enable-languages=c,c++ --without-headers
@@ -76,7 +76,6 @@ make install-gcc
 make all-target-libgcc -j4
 make install-target-libgcc
 ```
-
 Now run make and then qemu to test.
 ```
 cd ~/prgs/sortie-dopsys-myos
