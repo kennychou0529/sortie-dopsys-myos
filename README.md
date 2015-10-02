@@ -4,21 +4,6 @@ This original code is from:
 - Sources: [sortie/dopsys/myos](https://cs.au.dk/~sortie/dopsys/myos/)
 - Instructions: [sortie/dopsys/osdev](https://cs.au.dk/~sortie/dopsys/osdev/) which starts with:
 
-But it looks like better instructions is actually at [osdev.org](http://osdev.org). Within osdev.org see:
-- [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC distrutation is 
-
-But it looks like better instructions is actually at [osdev.org](http://osdev.org). Within osdev.org see:
-- [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC distrutation is 
-
-But it looks like better instructions is actually at [osdev.org](http://osdev.org). Within osdev.org see:
-- [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC distrutation is 
-
-But it looks like better instructions is actually at [osdev.org](http://osdev.org). Within osdev.org see:
-- [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC distrutation is 
-
-But it looks like better instructions is actually at [osdev.org](http://osdev.org). Within osdev.org see:
-- [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC distrutation is 
-
 But it looks like better instructions are actually at [osdev.org](http://osdev.org):
 - [GCC Cross Compiler](http://wiki.osdev.org/GCC_Cross-Compiler) this actually refers to building gcc 5.2.0. One interesting item is that in the GCC 5.2.0 source code that you'll download is the bash script gcc-5.2.0/contrib/download_prerequisites. The interesting this is that is downloading "loader" versions not the ToT (Tip of Tree) that I used.
 - [Bare Bones](http://wiki.osdev.org/Bare_Bones) from osdev.org for the "Hello, kernel World!" kernel which appears to be idential to sortie's, I wonder which came first?
